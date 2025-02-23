@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using vapes_api.Vapes.Dtos;
 using vapes_api.Vapes.Models;
 using vapes_api.Vapes.Repository;
 
@@ -15,13 +16,23 @@ namespace vapes_api.Vapes.Controllers
             _vapeRepo = vapeRepo;
         }
 
-        [HttpGet]
+        [HttpGet("allVapes")]
 
-        public async Task<ActionResult<List<Vape>>> GetVapeAsync()
+        public async Task<ActionResult<List<Vape>>> GetVapesAsync()
         {
             var vape = await _vapeRepo.GetVapesAsync();
 
             return Ok(vape);
+        }
+
+        [HttpPost("addVape")]
+
+
+        public async Task<ActionResult<VapeResponse>> CreateAsync([FromBody]VapeRequest vapeReq)
+        {
+            VapeResponse vapeSaved = await _vapeRepo.CreateVapeAsync(vapeReq);
+
+            return Ok(vapeSaved);
         }
     }
 }

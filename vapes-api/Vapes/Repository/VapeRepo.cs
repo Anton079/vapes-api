@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 using vapes_api.Data.Migrations;
+using vapes_api.Vapes.Dtos;
 using vapes_api.Vapes.Models;
 
 namespace vapes_api.Vapes.Repository
@@ -14,6 +15,20 @@ namespace vapes_api.Vapes.Repository
         {
             _appDbContext = appDbContext;
             _mapper = mapper;
+        }
+
+        public async Task<VapeResponse> CreateVapeAsync(VapeRequest vapeReq)
+        {
+            Vape vape = _mapper.Map<Vape>(vapeReq);
+
+            _appDbContext.Vapes.Add(vape);
+
+            await _appDbContext.SaveChangesAsync();
+
+            VapeResponse response = _mapper.Map<VapeResponse>(vape);
+
+
+            return response;
         }
 
         public async Task<List<Vape>> GetVapesAsync()

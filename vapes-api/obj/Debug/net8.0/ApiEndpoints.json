@@ -1,0 +1,48 @@
+[
+  {
+    "ContainingType": "vapes_api.Vapes.Controllers.VapeController",
+    "Method": "CreateAsync",
+    "RelativePath": "api/v1/Vape/addVape",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "vapeReq",
+        "Type": "vapes_api.Vapes.Dtos.VapeRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "vapes_api.Vapes.Dtos.VapeResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "vapes_api.Vapes.Controllers.VapeController",
+    "Method": "GetVapesAsync",
+    "RelativePath": "api/v1/Vape/allVapes",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[vapes_api.Vapes.Models.Vape, vapes-api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  }
+]
